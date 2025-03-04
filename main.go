@@ -1,15 +1,19 @@
 package main
 
 import (
-	"fmt"
+	"log"
+	"realestatesec/chaincode"
 
 	"github.com/hyperledger/fabric-contract-api-go/contractapi"
 )
 
-type SmartContract struct {
-	contractapi.Contract
-}
-
 func main() {
-	fmt.Println("Hello World")
+	assetChaincode, err := contractapi.NewChaincode(&chaincode.SmartContract{})
+	if err != nil {
+		log.Panicf("Error creating asset-transfer-basic chaincode: %v", err)
+	}
+
+	if err := assetChaincode.Start(); err != nil {
+		log.Panicf("Error starting asset-transfer-basic chaincode: %v", err)
+	}
 }
