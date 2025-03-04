@@ -29,13 +29,6 @@ type Bid struct {
 	SellerCountered bool   `json:"SellerCountered"`
 }
 
-// RegisterProperty DONE
-// ListProperty DONE
-// ViewProperties DONE
-// CounterBid
-// RejectBid DONE
-// PlaceBid DONE
-
 func (s *SmartContract) PropertyExists(ctx contractapi.TransactionContextInterface, id string) (bool, error) {
 	propertyJSON, err := ctx.GetStub().GetState(id)
 	if err != nil {
